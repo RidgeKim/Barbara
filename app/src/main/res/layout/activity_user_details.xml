@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.app.dextrous.barbara.activity..UserDetailsActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/label_full_name"
+            android:id="@+id/fullNameLabel"
+            android:layout_marginTop="93dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/label_not_available"
+            android:id="@+id/fullNameValueLabel"
+            android:layout_alignTop="@+id/fullNameLabel"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/label_username"
+            android:id="@+id/usernameLabel"
+            android:layout_marginTop="45dp"
+            android:layout_below="@+id/fullNameLabel"
+            android:layout_alignParentStart="true"
+            android:layout_alignBottom="@+id/speakerProfileLabel"
+            android:layout_toStartOf="@+id/fullNameValueLabel" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/label_not_available"
+            android:id="@+id/usernameValueLabel"
+            android:layout_alignTop="@+id/usernameLabel"
+            android:layout_alignStart="@+id/fullNameValueLabel" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/label_speaker_profile"
+            android:id="@+id/speakerProfileLabel"
+            android:layout_marginTop="129dp"
+            android:layout_below="@+id/fullNameLabel"
+            android:layout_alignParentStart="true"
+            android:layout_alignEnd="@+id/usernameLabel" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/label_not_available"
+            android:id="@+id/speakerProfileValueLabel"
+            android:layout_alignBottom="@+id/speakerProfileLabel"
+            android:layout_alignStart="@+id/usernameValueLabel" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/label_currency_type"
+            android:id="@+id/currencyTypeLabel"
+            android:layout_marginTop="63dp"
+            android:layout_below="@+id/speakerProfileLabel"
+            android:layout_alignParentStart="true"
+            android:layout_alignEnd="@+id/fullNameLabel" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/label_not_available"
+            android:id="@+id/currencyTypeValueLabel"
+            android:layout_alignTop="@+id/currencyTypeLabel"
+            android:layout_alignBottom="@+id/currencyTypeLabel"
+            android:layout_alignStart="@+id/speakerProfileValueLabel" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/label_wallet_amount"
+            android:id="@+id/walletAmountLabel"
+            android:layout_marginTop="53dp"
+            android:layout_below="@+id/currencyTypeLabel"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/label_not_available"
+            android:layout_alignTop="@+id/walletAmountLabel"
+            android:layout_alignStart="@+id/currencyTypeValueLabel"
+            android:id="@+id/walletAmountValue" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/label_credit_amount"
+            android:id="@+id/creditAmountLabel"
+            android:layout_marginTop="53dp"
+            android:layout_below="@+id/walletAmountLabel"
+            android:layout_alignParentStart="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/label_not_available"
+            android:id="@+id/creditAmountValue"
+            android:layout_alignTop="@+id/creditAmountLabel"
+            android:layout_alignStart="@+id/walletAmountValue" />
+
+    </RelativeLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>

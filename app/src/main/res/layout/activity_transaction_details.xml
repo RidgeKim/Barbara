@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.app.dextrous.barbara.activity.TransactionDetailsActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/label_description"
+            android:id="@+id/descriptionLabel"
+            android:layout_marginTop="93dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/label_not_available"
+            android:id="@+id/descriptionValueLabel"
+            android:paddingStart="@dimen/fab_margin"
+            android:layout_marginStart="55dp"
+            android:layout_alignTop="@+id/descriptionLabel"
+            android:layout_toEndOf="@+id/transactionDateLabel" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/label_from_user"
+            android:id="@+id/fromUserLabel"
+            android:layout_marginTop="45dp"
+            android:layout_below="@+id/descriptionLabel"
+            android:layout_alignParentStart="true"
+            android:layout_alignBottom="@+id/speakerProfileLabel"
+            android:layout_toStartOf="@+id/descriptionValueLabel" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/label_not_available"
+            android:id="@+id/fromUserValueLabel"
+            android:layout_alignTop="@+id/fromUserLabel"
+            android:layout_alignStart="@+id/descriptionValueLabel"
+            android:paddingStart="@dimen/fab_margin" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/label_to_user"
+            android:id="@+id/toUserLabel"
+            android:layout_marginTop="129dp"
+            android:layout_below="@+id/descriptionLabel"
+            android:layout_alignParentStart="true"
+            android:layout_alignEnd="@+id/fromUserLabel" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/label_not_available"
+            android:id="@+id/toUserValueLabel"
+            android:layout_alignBottom="@+id/toUserLabel"
+            android:layout_alignStart="@+id/fromUserValueLabel"
+            android:paddingStart="@dimen/fab_margin"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/label_currency_type"
+            android:id="@+id/currencyTypeLabel"
+            android:layout_marginTop="63dp"
+            android:layout_below="@+id/toUserLabel"
+            android:layout_alignParentStart="true"
+            android:layout_alignEnd="@+id/descriptionLabel" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/label_not_available"
+            android:id="@+id/currencyTypeValueLabel"
+            android:layout_alignTop="@+id/currencyTypeLabel"
+            android:layout_alignBottom="@+id/currencyTypeLabel"
+            android:layout_alignStart="@+id/toUserValueLabel"
+            android:paddingStart="@dimen/fab_margin"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/label_amount"
+            android:id="@+id/amountLabel"
+            android:layout_marginTop="53dp"
+            android:layout_below="@+id/currencyTypeLabel"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/label_not_available"
+            android:layout_alignTop="@+id/amountLabel"
+            android:layout_alignStart="@+id/currencyTypeValueLabel"
+            android:id="@+id/amountValueLabel"
+            android:paddingStart="@dimen/fab_margin"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/label_transaction_date"
+            android:id="@+id/transactionDateLabel"
+            android:layout_marginTop="53dp"
+            android:layout_below="@+id/amountLabel"
+            android:layout_alignParentStart="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/label_not_available"
+            android:id="@+id/transactionDateValueLabel"
+            android:layout_alignTop="@+id/transactionDateLabel"
+            android:layout_alignStart="@+id/amountValueLabel"
+            android:paddingStart="@dimen/fab_margin"/>
+
+    </RelativeLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>

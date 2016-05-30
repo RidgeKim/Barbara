@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:padding="6dip" >
+
+<ImageView
+    android:id="@+id/icon"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentTop="true"
+    android:layout_marginEnd="6dip"
+    android:contentDescription="@string/label_not_available"
+    android:src="@drawable/ic_menu_gallery" />
+
+<TextView
+    android:id="@+id/fromUserLabel"
+    android:layout_width="40dip"
+    android:layout_height="26dip"
+    android:layout_toEndOf="@id/icon"
+    android:ellipsize="marquee"
+    android:textColor="@color/colorAccent"
+    android:singleLine="true"
+    android:text="@string/label_from_user"
+    android:textSize="12sp"
+    android:layout_alignParentBottom="true" />
+
+<TextView
+    android:id="@+id/fromUserValueLabel"
+    android:layout_width="120dip"
+    android:layout_height="26dip"
+    android:ellipsize="marquee"
+    android:textColor="@color/colorAccent"
+    android:singleLine="true"
+    android:text="@string/label_not_available"
+    android:textSize="12sp"
+    android:layout_alignTop="@+id/fromUserLabel"
+    android:layout_toEndOf="@+id/fromUserLabel" />
+
+<TextView
+    android:id="@+id/toUserValueLabel"
+    android:layout_width="120dip"
+    android:layout_height="26dip"
+    android:ellipsize="marquee"
+    android:textColor="@color/colorAccent"
+    android:singleLine="true"
+    android:text="@string/label_not_available"
+    android:textSize="12sp"
+    android:layout_below="@+id/descriptionLabel"
+    android:layout_toEndOf="@+id/toUserLabel" />
+
+<TextView
+    android:id="@+id/toUserLabel"
+    android:layout_width="30dip"
+    android:layout_height="26dip"
+    android:ellipsize="marquee"
+    android:textColor="@color/colorAccent"
+    android:singleLine="true"
+    android:text="@string/label_to_user"
+    android:textSize="12sp"
+    android:layout_below="@+id/descriptionLabel"
+    android:layout_toEndOf="@+id/fromUserValueLabel" />
+
+<TextView
+    android:id="@+id/descriptionLabel"
+    android:layout_width="200dip"
+    android:layout_height="wrap_content"
+    android:layout_above="@id/fromUserLabel"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentTop="true"
+    android:textColor="@color/colorAccent"
+    android:layout_alignWithParentIfMissing="true"
+    android:layout_toEndOf="@id/icon"
+    android:gravity="center_vertical"
+    android:text="@string/label_not_available"
+    android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/goIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:contentDescription="@string/label_not_available"
+        android:src="@android:drawable/ic_media_play"
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/descriptionLabel" />
+</RelativeLayout>
