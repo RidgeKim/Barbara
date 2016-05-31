@@ -66,7 +66,7 @@ public class TransactionListCallback extends BaseCallback implements Callback<Ge
     @Override
     public void onFailure(Call<GenericListResponse<Transaction>> call, Throwable t) {
         Log.e("HTTP ERROR", t.getMessage(), t);
-        Toast.makeText(context, MSG_GENERIC_ERROR + t.getMessage(), Toast.LENGTH_LONG).show();
+        Toast.makeText(context, String.format("%s%s", MSG_GENERIC_ERROR, t.getMessage()), Toast.LENGTH_LONG).show();
         hideDialog();
     }
 }
