@@ -16,7 +16,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
-import retrofit2.http.Part;
+import retrofit2.http.PartMap;
 import retrofit2.http.Query;
 
 public interface BarbaraService {
@@ -42,9 +42,11 @@ public interface BarbaraService {
     @FormUrlEncoded
     Call<GenericBeanResponse<CommandResponse>> executeAuthenticatedTransaction(@FieldMap Map<String, Object> form);
 
-    @POST("users/authenticate-transfer")
+    @POST("transactions/authenticate-transfer")
     @Multipart
+    Call<GenericBeanResponse<CommandResponse>> authenticateTransfer(@PartMap Map<String, RequestBody> params);
 
-    Call<GenericBeanResponse<CommandResponse>> authenticateTransfer( @Part("userId") String userId,
-                                                                     @Part("file") RequestBody file);
+    @POST("users/verify-voice")
+    @Multipart
+    Call<GenericBeanResponse<User>> authenticateUser(@PartMap Map<String, RequestBody> params);
 }

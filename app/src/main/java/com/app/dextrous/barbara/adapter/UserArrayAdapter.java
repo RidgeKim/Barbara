@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-
 import com.app.dextrous.barbara.R;
 import com.app.dextrous.barbara.model.User;
 

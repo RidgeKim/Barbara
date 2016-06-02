@@ -9,9 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.app.dextrous.barbara.R;
-import com.app.dextrous.barbara.constant.BarbaraConstants;
 import com.app.dextrous.barbara.model.CreditTransaction;
-import com.app.dextrous.barbara.model.Transaction;
 
 import java.util.List;
 

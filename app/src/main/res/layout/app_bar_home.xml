@@ -31,7 +31,6 @@
         <include layout="@layout/content_user_list_view" />
         <include layout="@layout/content_transaction_list_view" />
         <include layout="@layout/content_credit_list_view" />
-        <include layout="@layout/content_chat_view" />
         <include layout="@layout/content_login_form" />
     </ViewFlipper>
 

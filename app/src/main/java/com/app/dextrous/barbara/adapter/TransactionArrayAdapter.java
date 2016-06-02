@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.app.dextrous.barbara.R;
 import com.app.dextrous.barbara.model.Transaction;
-import com.app.dextrous.barbara.model.User;
 
 import java.util.List;
 

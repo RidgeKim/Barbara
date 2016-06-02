@@ -10,12 +10,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.app.dextrous.barbara.activity.TransactionDetailsActivity;
-import com.app.dextrous.barbara.activity.UserDetailsActivity;
 import com.app.dextrous.barbara.adapter.TransactionArrayAdapter;
-import com.app.dextrous.barbara.adapter.UserArrayAdapter;
-import com.app.dextrous.barbara.constant.BarbaraConstants;
 import com.app.dextrous.barbara.model.Transaction;
-import com.app.dextrous.barbara.model.User;
 import com.app.dextrous.barbara.response.GenericListResponse;
 
 import java.util.List;
@@ -24,7 +20,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.app.dextrous.barbara.constant.BarbaraConstants.*;
+import static com.app.dextrous.barbara.constant.BarbaraConstants.INTENT_PARAM_TRANSACTION_ITEM_KEY;
 import static com.app.dextrous.barbara.constant.BarbaraConstants.MSG_GENERIC_ERROR;
 
 public class TransactionListCallback extends BaseCallback implements Callback<GenericListResponse<Transaction>> {

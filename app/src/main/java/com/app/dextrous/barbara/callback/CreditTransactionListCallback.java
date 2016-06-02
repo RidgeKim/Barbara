@@ -1,19 +1,13 @@
 package com.app.dextrous.barbara.callback;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.app.dextrous.barbara.activity.TransactionDetailsActivity;
 import com.app.dextrous.barbara.adapter.CreditTransactionArrayAdapter;
-import com.app.dextrous.barbara.adapter.TransactionArrayAdapter;
 import com.app.dextrous.barbara.model.CreditTransaction;
-import com.app.dextrous.barbara.model.Transaction;
 import com.app.dextrous.barbara.response.GenericListResponse;
 
 import java.util.List;
@@ -22,7 +16,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.app.dextrous.barbara.constant.BarbaraConstants.INTENT_PARAM_TRANSACTION_ITEM_KEY;
 import static com.app.dextrous.barbara.constant.BarbaraConstants.MSG_GENERIC_ERROR;
 
 public class CreditTransactionListCallback extends BaseCallback implements Callback<GenericListResponse<CreditTransaction>> {

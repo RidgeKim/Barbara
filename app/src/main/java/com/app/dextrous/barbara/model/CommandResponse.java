@@ -17,11 +17,12 @@ public class CommandResponse implements Serializable {
     private Boolean isReminderRequest;
     private Boolean isScheduleRequest;
     private Boolean isTransactionRequest;
-    private Double referredAmount;
+    private String referredAmount;
     private String referredUser;
     private Boolean requireAuthentication;
     private String responseText;
     private String scheduledResponseText;
+
 
     public Date getAssociatedTime() {
         return associatedTime;
@@ -119,11 +120,11 @@ public class CommandResponse implements Serializable {
         this.isTransactionRequest = isTransactionRequest;
     }
 
-    public Double getReferredAmount() {
+    public String getReferredAmount() {
         return referredAmount;
     }
 
-    public void setReferredAmount(Double referredAmount) {
+    public void setReferredAmount(String referredAmount) {
         this.referredAmount = referredAmount;
     }
 
