@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/label_nick_name"
+        android:id="@+id/nickNameLabel"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/label_not_available"
+        android:id="@+id/nickNameValueLabel"
+        android:layout_alignTop="@+id/nickNameLabel"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/label_budget"
+        android:id="@+id/budgetLabel"
+        android:layout_marginTop="45dp"
+        android:layout_below="@+id/nickNameLabel"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/speakerProfileLabel"
+        android:layout_toStartOf="@+id/nickNameValueLabel" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/label_not_available"
+        android:id="@+id/budgetValueLabel"
+        android:layout_alignTop="@+id/budgetLabel"
+        android:layout_alignStart="@+id/nickNameValueLabel" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/label_security_question"
+        android:id="@+id/securityQuestionLabel"
+        android:layout_marginTop="129dp"
+        android:layout_below="@+id/nickNameLabel"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/budgetLabel" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/label_not_available"
+        android:id="@+id/securityQuestionValueLabel"
+        android:layout_alignBottom="@+id/securityQuestionLabel"
+        android:layout_alignStart="@+id/budgetValueLabel" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_edit_preferences"
+        android:id="@+id/editPreferencesButton"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

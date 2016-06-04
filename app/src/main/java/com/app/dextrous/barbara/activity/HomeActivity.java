@@ -22,13 +22,16 @@ import android.widget.ViewFlipper;
 import com.app.dextrous.barbara.R;
 import com.app.dextrous.barbara.adapter.ChatArrayAdapter;
 import com.app.dextrous.barbara.callback.CreditTransactionListCallback;
+import com.app.dextrous.barbara.callback.InvestmentPlanListCallback;
 import com.app.dextrous.barbara.callback.LoginResponseCallback;
 import com.app.dextrous.barbara.callback.TransactionListCallback;
 import com.app.dextrous.barbara.callback.UserListCallback;
-import com.app.dextrous.barbara.constant.BarbaraConstants;
+import com.app.dextrous.barbara.callback.UserPreferencesCallback;
 import com.app.dextrous.barbara.model.CreditTransaction;
+import com.app.dextrous.barbara.model.InvestmentPlan;
 import com.app.dextrous.barbara.model.Transaction;
 import com.app.dextrous.barbara.model.User;
+import com.app.dextrous.barbara.model.UserPreference;
 import com.app.dextrous.barbara.response.GenericBeanResponse;
 import com.app.dextrous.barbara.response.GenericListResponse;
 import com.app.dextrous.barbara.service.BarbaraService;
@@ -178,8 +181,12 @@ public class HomeActivity extends AppCompatActivity
                         if (screenToShowNext == null) {
                             screenToShowNext = 3;
                         }
+                    case R.id.nav_preferences:
+                        if (screenToShowNext == null) {
+                            screenToShowNext = 4;
+                        }
                         // Redirect to login page
-                        flipper.setDisplayedChild(5);
+                        flipper.setDisplayedChild(6);
                         initLoginView(screenToShowNext);
                         // load login screen and quit
                         drawer.closeDrawer(GravityCompat.START);
@@ -212,10 +219,25 @@ public class HomeActivity extends AppCompatActivity
                 }
             } else if (id == R.id.nav_chat) {
                 openChatActivity();
-            } else if (id == R.id.nav_about) {
+            } else if (id == R.id.nav_preferences) {
+                flipper.setDisplayedChild(4);
+                TextView nickNameTextView = (TextView) findViewById(R.id.nickNameValueLabel);
+                TextView budgetTextView = (TextView) findViewById(R.id.budgetValueLabel);
+                TextView securityQuestionTextView = (TextView) findViewById(R.id.securityQuestionValueLabel);
+                Button editPreferenceButton = (Button) findViewById(R.id.editPreferencesButton);
+                User loggedInUser = getLoggedInUser();
+                Call<GenericBeanResponse<UserPreference>> responseCall = apiService.getUserPreference(String.valueOf(loggedInUser.getId()));
+                responseCall.enqueue(new UserPreferencesCallback(self, budgetTextView,
+                        securityQuestionTextView,
+                        nickNameTextView,
+                        editPreferenceButton));
 
             } else if (id == R.id.nav_investments) {
-
+                flipper.setDisplayedChild(5);
+                Call<GenericListResponse<InvestmentPlan>> responseCall = apiService.getInvetmentPlans();
+                responseCall.enqueue(new InvestmentPlanListCallback(self, (ListView) findViewById(R.id.investmentsListView)));
+            } else if (id == R.id.nav_about) {
+                flipper.setDisplayedChild(0);
             }
             drawer.closeDrawer(GravityCompat.START);
         }

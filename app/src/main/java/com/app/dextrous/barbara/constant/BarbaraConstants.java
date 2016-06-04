@@ -21,17 +21,25 @@ public class BarbaraConstants {
 
     public static final String INTENT_PARAM_USER_ITEM_KEY = "userDetailItemKey";
     public static final String INTENT_PARAM_USER_ITEM_ID_KEY = "userDetailItemIdKey";
+
     public static final String INTENT_PARAM_TRANSACTION_ITEM_KEY = "transactionDetailItemKey";
     public static final String INTENT_PARAM_TRANSACTION_ITEM_ID_KEY = "transactionDetailItemIdKey";
+
+    public static final String INTENT_PARAM_USER_PREFERENCE_ITEM_KEY = "userPreferencesItemKey";
+    public static final String INTENT_PARAM_USER_PREFERENCE_ITEM_ID_KEY = "userPreferenceItemIdKey";
 
     public static final String FIELD_USERNAME = "username";
     public static final String FIELD_PASSWORD = "password";
     public static final String FIELD_USER_ID = "userId";
     public static final String FIELD_COMMAND_STRING = "command";
+    public static final String FIELD_NICK_NAME = "nickName";
+    public static final String FIELD_BUDGET = "budget";
+    public static final String FIELD_SECURITY_QUESTION = "securityQuestion";
     public static final String FIELD_MULTIPART_FILE_WITH_NAME = "file\"; filename=\"%s\"";
 
     public static final String MSG_GENERIC_ERROR = "Something went wrong!! Try after sometime!! \n Error:";
     public static final String MSG_SPEECH_RECOGNITION_NOT_SUPPORTED = "Oops! Your device doesn't support Speech to Text";
+    public static final String MSG_PREFERENCES_SAVED = "Your preferences have been saved! Please reload.";
 
     public static final String SPEECH_TO_TEXT_LOCALE_INDIA = "en-IN";
 
@@ -61,7 +69,26 @@ public class BarbaraConstants {
     public static final int RECORDER_SAMPLE_RATE = 16000;
     public static final int RECORDER_CHANNELS = AudioFormat.CHANNEL_IN_MONO;
     public static final int RECORDER_AUDIO_ENCODING = AudioFormat.ENCODING_PCM_16BIT;
-    public static final int MAX_RECORDING_TIME = 1000; // --> 7-8 Seconds
+    public static final int MAX_RECORDING_TIME = 600; // --> 7-8 Seconds
     public static final int MIN_WAITING_TIME = 3000; // --> 2 Seconds
 
+    public enum PREFERENCE_KEY {
+        NICK_NAME("How should I call you?"),
+        SECURITY_QUESTION("What should I ask when I want your voice password?"),
+        BUDGET("What should be your monthly budget?");
+
+        private String question;
+
+        PREFERENCE_KEY(String question) {
+            this.question = question;
+        }
+
+        public String getQuestion() {
+            return this.question;
+        }
+    }
+
+    public static String[] WORDS_INDICATING_RELATIONS_IN_CONTACTS = new String[]{
+            "mom", "dad", "wife", "son", "daughter"
+    };
 }

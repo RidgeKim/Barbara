@@ -174,7 +174,8 @@ public class UserChatActivity extends AppCompatActivity implements Callback<Gene
                 multipartForm.put(String.format(FIELD_MULTIPART_FILE_WITH_NAME, recordedAudioFile.getName()), audioFilePart);
                 Call<GenericBeanResponse<User>> responseCall = apiService.authenticateUser(multipartForm);
                 responseCall.enqueue(new UserAuthenticationCallback(self, commandResponse));
-            } else if (commandResponse.getIsTransactionRequest()) {
+            } else if (commandResponse.getIsTransactionRequest()
+                    && !commandResponse.getIsReadRequest()) {
                 RequestBody commandStringPart = RequestBody.create(MediaType.parse("text/plain"), commandResponse.getScheduledResponseText());
                 Map<String, RequestBody> multipartForm = new HashMap<>();
                 multipartForm.put(FIELD_USER_ID, userIdPart);
@@ -287,23 +288,15 @@ public class UserChatActivity extends AppCompatActivity implements Callback<Gene
                 @Override
                 public void onClick(View v) {
                     if (AndroidUtil.isFileReadWritePermissionEnabled(self)
-                            && AndroidUtil.isMicrophonePermissionEnabled(self)) {
+                            && AndroidUtil.isMicrophonePermissionEnabled(self)
+                            && AndroidUtil.isContactsPermissionEnabled(self)) {
                         if (msgContent != null
                                 && msgContent.getText() != null) {
                             String commandText = msgContent.getText().toString();
                             User authUser = getLoggedInUser();
-                            if (!STRING_BLANK.equals(commandText.trim())
-                                    && authUser != null) {
-                                String BASE_URL = getResources().getString(R.string.base_api_url);
-                                final BarbaraService apiService = RetrofitWrapper.build(BASE_URL);
-                                Map<String, Object> form = new HashMap<>();
-                                addChatItem(true, commandText);
-                                msgContent.setText(STRING_BLANK);
-                                form.put(FIELD_USER_ID, authUser.getId());
-                                form.put(FIELD_COMMAND_STRING, commandText.trim());
-                                Call<GenericBeanResponse<CommandResponse>> responseCall = apiService.processCommand(form);
-                                responseCall.enqueue(self);
-                            }
+                            processTextCommand(authUser, commandText);
+                            addChatItem(true, commandText);
+                            msgContent.setText(STRING_BLANK);
                         }
                     } else {
                         // request permissions
@@ -330,6 +323,8 @@ public class UserChatActivity extends AppCompatActivity implements Callback<Gene
                 && !STRING_BLANK.equals(textCommand.trim())) {
             String BASE_URL = getResources().getString(R.string.base_api_url);
             final BarbaraService apiService = RetrofitWrapper.build(BASE_URL);
+            System.out.println("in process command");
+            textCommand = AndroidUtil.replaceRelationshipWordsWithNames(self, textCommand);
             Map<String, Object> form = new HashMap<>();
             form.put(FIELD_USER_ID, authUser.getId());
             form.put(FIELD_COMMAND_STRING, textCommand);

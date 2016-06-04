@@ -2,8 +2,10 @@ package com.app.dextrous.barbara.service;
 
 import com.app.dextrous.barbara.model.CommandResponse;
 import com.app.dextrous.barbara.model.CreditTransaction;
+import com.app.dextrous.barbara.model.InvestmentPlan;
 import com.app.dextrous.barbara.model.Transaction;
 import com.app.dextrous.barbara.model.User;
+import com.app.dextrous.barbara.model.UserPreference;
 import com.app.dextrous.barbara.response.GenericBeanResponse;
 import com.app.dextrous.barbara.response.GenericListResponse;
 
@@ -29,6 +31,16 @@ public interface BarbaraService {
 
     @GET("transactions/credit/all")
     Call<GenericListResponse<CreditTransaction>> getAllUserCreditTransactions(@Query("userId") String userId);
+
+    @GET("users/preferences")
+    Call<GenericBeanResponse<UserPreference>> getUserPreference(@Query("userId") String userId);
+
+    @POST("users/save-preferences")
+    @FormUrlEncoded
+    Call<GenericBeanResponse<UserPreference>> saveUserPreference(@FieldMap Map<String, Object> form);
+
+    @GET("investment/plans")
+    Call<GenericListResponse<InvestmentPlan>> getInvetmentPlans();
 
     @POST("login")
     @FormUrlEncoded

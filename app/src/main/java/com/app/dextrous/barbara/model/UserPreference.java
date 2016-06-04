@@ -6,6 +6,7 @@ import java.util.Date;
 
 public class UserPreference implements Serializable {
     private Integer id;
+    private Integer userId;
     private float budget;
     private String securityQuestion;
     private String nickName;
@@ -60,10 +61,19 @@ public class UserPreference implements Serializable {
         this.lastUpdatedTS = lastUpdatedTS;
     }
 
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
     @Override
     public String toString() {
         return "UserPreference{" +
                 "id=" + id +
+                "userId=" + userId +
                 ", budget=" + budget +
                 ", securityQuestion='" + securityQuestion + '\'' +
                 ", nickName='" + nickName + '\'' +

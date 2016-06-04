@@ -31,6 +31,8 @@
         <include layout="@layout/content_user_list_view" />
         <include layout="@layout/content_transaction_list_view" />
         <include layout="@layout/content_credit_list_view" />
+        <include layout="@layout/content_user_preferences" />
+        <include layout="@layout/content_investment_list_view" />
         <include layout="@layout/content_login_form" />
     </ViewFlipper>
 
@@ -40,6 +42,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_menu_view" />
+        android:src="@android:drawable/ic_btn_speak_now" />
 
 </android.support.design.widget.CoordinatorLayout>

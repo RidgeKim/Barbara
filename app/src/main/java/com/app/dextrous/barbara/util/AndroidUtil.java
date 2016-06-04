@@ -13,6 +13,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.net.Uri;
+import android.provider.ContactsContract;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -33,6 +36,7 @@ import static com.app.dextrous.barbara.constant.BarbaraConstants.REQUEST_PERMISS
 import static com.app.dextrous.barbara.constant.BarbaraConstants.STRING_BLANK;
 import static com.app.dextrous.barbara.constant.BarbaraConstants.STRING_CANCEL_LINK_FOR_ALERT;
 import static com.app.dextrous.barbara.constant.BarbaraConstants.STRING_SETTING_LINK_FOR_ALERT;
+import static com.app.dextrous.barbara.constant.BarbaraConstants.WORDS_INDICATING_RELATIONS_IN_CONTACTS;
 
 
 public class AndroidUtil {
@@ -90,7 +94,7 @@ public class AndroidUtil {
     public static boolean isFileReadWritePermissionEnabled(Activity activity) {
         return ContextCompat.checkSelfPermission(activity,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                        == PackageManager.PERMISSION_GRANTED &&
+                == PackageManager.PERMISSION_GRANTED &&
                 ContextCompat.checkSelfPermission(activity,
                         Manifest.permission.READ_EXTERNAL_STORAGE)
                         == PackageManager.PERMISSION_GRANTED;
@@ -102,10 +106,17 @@ public class AndroidUtil {
                 == PackageManager.PERMISSION_GRANTED;
     }
 
+    public static boolean isContactsPermissionEnabled(Activity activity) {
+        return ContextCompat.checkSelfPermission(activity,
+                Manifest.permission.READ_CONTACTS)
+                == PackageManager.PERMISSION_GRANTED;
+    }
+
     public static void checkAndRequestNecessaryPermissions(Activity activity) {
         checkAndRequestPermission(activity, Manifest.permission.RECORD_AUDIO);
         checkAndRequestPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         checkAndRequestPermission(activity, Manifest.permission.READ_EXTERNAL_STORAGE);
+        checkAndRequestPermission(activity, Manifest.permission.READ_CONTACTS);
     }
 
     public static void checkAndRequestPermission(Activity activity, String permissionString) {
@@ -116,7 +127,7 @@ public class AndroidUtil {
 
             // Should we show an explanation?
             if (ActivityCompat.shouldShowRequestPermissionRationale(activity,
-                    Manifest.permission.READ_CONTACTS)) {
+                    permissionString)) {
 
                 // Show an expanation to the user *asynchronously* -- don't block
                 // this thread waiting for the user's response! After the user
@@ -130,12 +141,8 @@ public class AndroidUtil {
                 // No explanation needed, we can request the permission.
 
                 ActivityCompat.requestPermissions(activity,
-                        new String[]{Manifest.permission.READ_CONTACTS},
+                        new String[]{permissionString},
                         REQUEST_PERMISSION_SELF_CHECK);
-
-                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
-                // app-defined int constant. The callback method gets the
-                // result of the request.
             }
         }
     }
@@ -169,7 +176,7 @@ public class AndroidUtil {
         Intent notificationIntent = new Intent(context, NotificationPublisher.class);
         notificationIntent.putExtra(INTENT_PARAM_IS_TRANSACTION_REQUEST,
                 (!commandResponse.getIsReminderRequest()
-                && commandResponse.getIsTransactionRequest()));
+                        && commandResponse.getIsTransactionRequest()));
         notificationIntent.putExtra(INTENT_PARAM_SCHEDULED_RESPONSE_TEXT, commandResponse.getScheduledResponseText());
         notificationIntent.putExtra(INTENT_PARAM_USER_ITEM_ID_KEY, user.getId());
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -181,5 +188,56 @@ public class AndroidUtil {
 
     public static double getRandomNumber() {
         return Math.random() * RANDOM_NUMBER_PRECESSION;
+    }
+
+    public static String checkIdThereIsARelationShipKeyInString(String sentence) {
+        String chosenRelationship = null;
+        for (String relation : WORDS_INDICATING_RELATIONS_IN_CONTACTS) {
+            if (sentence.contains(relation)) {
+                chosenRelationship = relation;
+                break;
+            }
+        }
+        return chosenRelationship;
+    }
+
+    public static String replaceRelationshipWordsWithNames(Context context, String textCommand) {
+        String relation = checkIdThereIsARelationShipKeyInString(textCommand);
+        if (relation != null) {
+            String name = readContactsWithRelationshipAndGetName(context, relation);
+            if (!STRING_BLANK.equals(name)) {
+                // replace relation with name
+                textCommand = textCommand.replace(relation, name);
+            }
+        }
+        return textCommand;
+    }
+
+    private static String readContactsWithRelationshipAndGetName(Context context, String relation) {
+        Uri uri = ContactsContract.Data.CONTENT_URI;
+        String where = String.format(
+                "%s = ?",
+                ContactsContract.CommonDataKinds.Relation.NAME);
+
+        String[] whereParams = new String[]{
+                relation,
+        };
+
+        String[] selectColumns = new String[]{
+                ContactsContract.CommonDataKinds.Identity.DISPLAY_NAME,
+                // add additional columns here
+        };
+        Cursor relationCursor = context.getContentResolver().query(
+                uri,
+                selectColumns,
+                where,
+                whereParams,
+                null);
+        if (relationCursor != null
+                && relationCursor.moveToFirst()) {
+            return relationCursor.getString(
+                    relationCursor.getColumnIndex(ContactsContract.CommonDataKinds.Identity.DISPLAY_NAME));
+        }
+        return relation;
     }
 }
