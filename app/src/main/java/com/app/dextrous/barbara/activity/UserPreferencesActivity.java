@@ -87,17 +87,13 @@ public class UserPreferencesActivity extends AppCompatActivity {
                             responseCall.enqueue(new UserPreferencesCallback(getApplicationContext(), null, null, null, null));
                             Toast.makeText(getApplicationContext(), MSG_PREFERENCES_SAVED, Toast.LENGTH_LONG).show();
                             onBackPressed();
-                        } else if (currentIndex < 2
-                                && preferenceValue.getText().length() > 0) {
+                        } else if (currentIndex < 2) {
                             switch (currentIndex) {
                                 case 0:
                                     preferencesMap.put(PREFERENCE_KEY.NICK_NAME, preferenceString);
                                     break;
                                 case 1:
                                     preferencesMap.put(PREFERENCE_KEY.BUDGET, preferenceString);
-                                    break;
-                                case 2:
-                                    preferencesMap.put(PREFERENCE_KEY.SECURITY_QUESTION, preferenceString);
                                     break;
                                 default:
                                     break;
@@ -195,7 +191,11 @@ public class UserPreferencesActivity extends AppCompatActivity {
         }
         if (preferenceKey != null) {
             currentQuestion = preferenceKey.getQuestion();
-            preferenceValue.setText(preferenceKeyMap.get(preferenceKey).toString());
+            String currentAnswer = STRING_BLANK;
+            if(preferenceKeyMap.get(preferenceKey) != null) {
+                currentAnswer = preferenceKeyMap.get(preferenceKey).toString();
+            }
+            preferenceValue.setText(currentAnswer);
         }
         preferenceQuestion.setText(currentQuestion);
     }
@@ -222,13 +222,4 @@ public class UserPreferencesActivity extends AppCompatActivity {
         preferenceKeyObjectMap.put(PREFERENCE_KEY.SECURITY_QUESTION, userPreference.getSecurityQuestion());
         return preferenceKeyObjectMap;
     }
-
-    private UserPreference getPreferencesFromMap(Map<PREFERENCE_KEY, Object> mappedPreferences) {
-        UserPreference userPreference = new UserPreference();
-        userPreference.setNickName((String) mappedPreferences.get(PREFERENCE_KEY.NICK_NAME));
-        userPreference.setBudget(Float.parseFloat(mappedPreferences.get(PREFERENCE_KEY.BUDGET).toString()));
-        userPreference.setSecurityQuestion((String) mappedPreferences.get(PREFERENCE_KEY.SECURITY_QUESTION));
-        return userPreference;
-    }
-
 }

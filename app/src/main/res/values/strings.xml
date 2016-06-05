@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Barbara</string>
-    <string name="base_api_url">http://10.0.2.2:8090/api/</string>
+    <string name="base_api_url">http://barbara-crackerjack.rhcloud.com/api/</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
