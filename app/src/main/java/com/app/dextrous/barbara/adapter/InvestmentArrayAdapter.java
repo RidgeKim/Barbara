@@ -9,18 +9,16 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.app.dextrous.barbara.R;
-import com.app.dextrous.barbara.model.CreditTransaction;
 import com.app.dextrous.barbara.model.InvestmentPlan;
 
 import java.util.List;
 
-import static com.app.dextrous.barbara.constant.BarbaraConstants.DELIMITER_SPACE;
+import static com.app.dextrous.barbara.constant.BarbaraConstants.TAG;
 
 public class InvestmentArrayAdapter extends ArrayAdapter<InvestmentPlan> {
 
     private final Context context;
     private final List<InvestmentPlan> values;
-    String TAG = InvestmentArrayAdapter.class.getName();
 
     public InvestmentArrayAdapter(Context context, List<InvestmentPlan> values) {
         super(context, -1, values);

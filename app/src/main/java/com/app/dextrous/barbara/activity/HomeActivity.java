@@ -2,7 +2,6 @@ package com.app.dextrous.barbara.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.speech.tts.TextToSpeech;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -20,7 +19,6 @@ import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import com.app.dextrous.barbara.R;
-import com.app.dextrous.barbara.adapter.ChatArrayAdapter;
 import com.app.dextrous.barbara.callback.CreditTransactionListCallback;
 import com.app.dextrous.barbara.callback.InvestmentPlanListCallback;
 import com.app.dextrous.barbara.callback.LoginResponseCallback;
@@ -46,16 +44,13 @@ import retrofit2.Call;
 import static com.app.dextrous.barbara.constant.BarbaraConstants.FIELD_PASSWORD;
 import static com.app.dextrous.barbara.constant.BarbaraConstants.FIELD_USERNAME;
 import static com.app.dextrous.barbara.constant.BarbaraConstants.STRING_BLANK;
-import static com.app.dextrous.barbara.constant.BarbaraConstants.USER_AUTH_OBJECT_PREFERENCE_KEY;
 import static com.app.dextrous.barbara.constant.BarbaraConstants.TAG;
+import static com.app.dextrous.barbara.constant.BarbaraConstants.USER_AUTH_OBJECT_PREFERENCE_KEY;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private static final int RESULT_SPEECH = 999;
     private HomeActivity self = this;
-    private ChatArrayAdapter chatArrayAdapter;
-    private TextToSpeech textToSpeechInstance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

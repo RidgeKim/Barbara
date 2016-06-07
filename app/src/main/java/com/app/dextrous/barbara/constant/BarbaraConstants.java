@@ -69,8 +69,8 @@ public class BarbaraConstants {
     public static final int RECORDER_SAMPLE_RATE = 16000;
     public static final int RECORDER_CHANNELS = AudioFormat.CHANNEL_IN_MONO;
     public static final int RECORDER_AUDIO_ENCODING = AudioFormat.ENCODING_PCM_16BIT;
-    public static final int MAX_RECORDING_TIME = 600; // --> 7-8 Seconds
-    public static final int MIN_WAITING_TIME = 3000; // --> 2 Seconds
+    public static final int MAX_RECORDING_TIME = 200; // --> 7-8 Seconds
+    public static final int MIN_WAITING_TIME = 50000; // --> 5 Seconds
 
     public enum PREFERENCE_KEY {
         NICK_NAME("How should I call you?"),
@@ -89,6 +89,6 @@ public class BarbaraConstants {
     }
 
     public static String[] WORDS_INDICATING_RELATIONS_IN_CONTACTS = new String[]{
-            "mom", "dad", "wife", "son", "daughter"
+            "mum", "mom", "dad", "wife", "son", "daughter"
     };
 }

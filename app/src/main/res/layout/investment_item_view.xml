@@ -75,6 +75,6 @@
         android:layout_toEndOf="@id/icon"
         android:gravity="center_vertical"
         android:text="@string/label_not_available"
-        android:textSize="16sp" />
+        android:textSize="14sp" />
 
 </RelativeLayout>

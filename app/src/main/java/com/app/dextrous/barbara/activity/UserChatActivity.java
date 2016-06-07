@@ -31,7 +31,6 @@ import com.app.dextrous.barbara.util.AndroidUtil;
 import com.app.dextrous.barbara.wrapper.RetrofitWrapper;
 
 import java.io.File;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -123,8 +122,7 @@ public class UserChatActivity extends AppCompatActivity implements Callback<Gene
                 if (statusResponse.getRequireAuthentication()) {
                     // Record audio and make another network call with the audio
                     WavRecordingAsyncTask asyncTask = new WavRecordingAsyncTask(self, self, statusResponse);
-                    System.out.println("Starting the recording task...");
-                    System.out.println(new Date().getTime());
+                    Log.d(TAG, "Starting the recording task...");
                     asyncTask.execute();
                 } else {
                     // do other checks to process the transaction
@@ -160,9 +158,8 @@ public class UserChatActivity extends AppCompatActivity implements Callback<Gene
         // on response of rest call execute or schedule transaction
         String BASE_URL = getResources().getString(R.string.base_api_url);
         final BarbaraService apiService = RetrofitWrapper.build(BASE_URL);
-        System.out.println("receiving recorded file..." + recordedAudioFile.getAbsolutePath());
-        System.out.println("commandResponse=" + commandResponse);
-        System.out.println(new Date().getTime());
+        Log.d(TAG, "receiving recorded file..." + recordedAudioFile.getAbsolutePath());
+        Log.d(TAG, "commandResponse=" + commandResponse);
         User loggedInUser = getLoggedInUser();
         if (loggedInUser != null) {
             RequestBody audioFilePart = RequestBody.create(MediaType.parse("audio/wav"), recordedAudioFile);
@@ -323,7 +320,7 @@ public class UserChatActivity extends AppCompatActivity implements Callback<Gene
                 && !STRING_BLANK.equals(textCommand.trim())) {
             String BASE_URL = getResources().getString(R.string.base_api_url);
             final BarbaraService apiService = RetrofitWrapper.build(BASE_URL);
-            System.out.println("in process command");
+            Log.d(TAG, "in process command");
             textCommand = AndroidUtil.replaceRelationshipWordsWithNames(self, textCommand);
             Map<String, Object> form = new HashMap<>();
             form.put(FIELD_USER_ID, authUser.getId());

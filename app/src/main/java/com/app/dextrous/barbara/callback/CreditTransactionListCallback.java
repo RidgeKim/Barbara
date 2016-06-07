@@ -17,6 +17,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.app.dextrous.barbara.constant.BarbaraConstants.MSG_GENERIC_ERROR;
+import static com.app.dextrous.barbara.constant.BarbaraConstants.TAG;
 
 public class CreditTransactionListCallback extends BaseCallback implements Callback<GenericListResponse<CreditTransaction>> {
     private ListView listView;
@@ -28,7 +29,7 @@ public class CreditTransactionListCallback extends BaseCallback implements Callb
     @Override
     public void onResponse(Call<GenericListResponse<CreditTransaction>> call, Response<GenericListResponse<CreditTransaction>> response) {
         GenericListResponse<CreditTransaction> apiResponse = response.body();
-        System.out.println(response.body());
+        Log.d(TAG,response.body().toString());
         if(apiResponse != null) {
             List<CreditTransaction> transactionList = apiResponse.getItems();
             if(transactionList != null && !transactionList.isEmpty()){

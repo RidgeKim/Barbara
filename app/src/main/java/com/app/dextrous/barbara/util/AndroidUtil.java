@@ -19,6 +19,7 @@ import android.provider.ContactsContract;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 
 import com.app.dextrous.barbara.model.CommandResponse;
 import com.app.dextrous.barbara.model.User;
@@ -36,11 +37,11 @@ import static com.app.dextrous.barbara.constant.BarbaraConstants.REQUEST_PERMISS
 import static com.app.dextrous.barbara.constant.BarbaraConstants.STRING_BLANK;
 import static com.app.dextrous.barbara.constant.BarbaraConstants.STRING_CANCEL_LINK_FOR_ALERT;
 import static com.app.dextrous.barbara.constant.BarbaraConstants.STRING_SETTING_LINK_FOR_ALERT;
+import static com.app.dextrous.barbara.constant.BarbaraConstants.TAG;
 import static com.app.dextrous.barbara.constant.BarbaraConstants.WORDS_INDICATING_RELATIONS_IN_CONTACTS;
 
 
 public class AndroidUtil {
-    static String TAG = AndroidUtil.class.getName();
 
     public static String getStringPreferenceValue(Context context, String preferenceKey) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(APP_SHARED_PREFERENCE_KEY, Context.MODE_PRIVATE);
@@ -172,7 +173,7 @@ public class AndroidUtil {
     public static void scheduleNotificationForCommandResponse(Context context,
                                                               User user,
                                                               CommandResponse commandResponse) {
-        System.out.println("Scheduling notification");
+        Log.d(TAG, "Scheduling notification");
         Intent notificationIntent = new Intent(context, NotificationPublisher.class);
         notificationIntent.putExtra(INTENT_PARAM_IS_TRANSACTION_REQUEST,
                 (!commandResponse.getIsReminderRequest()

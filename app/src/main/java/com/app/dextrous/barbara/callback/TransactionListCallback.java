@@ -22,6 +22,7 @@ import retrofit2.Response;
 
 import static com.app.dextrous.barbara.constant.BarbaraConstants.INTENT_PARAM_TRANSACTION_ITEM_KEY;
 import static com.app.dextrous.barbara.constant.BarbaraConstants.MSG_GENERIC_ERROR;
+import static com.app.dextrous.barbara.constant.BarbaraConstants.TAG;
 
 public class TransactionListCallback extends BaseCallback implements Callback<GenericListResponse<Transaction>> {
     private ListView listView;
@@ -33,7 +34,7 @@ public class TransactionListCallback extends BaseCallback implements Callback<Ge
     @Override
     public void onResponse(Call<GenericListResponse<Transaction>> call, Response<GenericListResponse<Transaction>> response) {
         GenericListResponse<Transaction> apiResponse = response.body();
-        System.out.println(response.body());
+        Log.d(TAG, String.valueOf(response.body()));
         if(apiResponse != null) {
             List<Transaction> transactionList = apiResponse.getItems();
             if(transactionList != null && !transactionList.isEmpty()){

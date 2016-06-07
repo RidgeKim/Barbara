@@ -13,11 +13,12 @@ import com.app.dextrous.barbara.model.Transaction;
 
 import java.util.List;
 
+import static com.app.dextrous.barbara.constant.BarbaraConstants.TAG;
+
 public class TransactionArrayAdapter extends ArrayAdapter<Transaction> {
 
     private final Context context;
     private final List<Transaction> values;
-    String TAG = TransactionArrayAdapter.class.getName();
 
     public TransactionArrayAdapter(Context context, List<Transaction> values) {
         super(context, -1, values);

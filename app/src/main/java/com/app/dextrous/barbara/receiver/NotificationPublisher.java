@@ -28,13 +28,14 @@ import static com.app.dextrous.barbara.constant.BarbaraConstants.INTENT_PARAM_SC
 import static com.app.dextrous.barbara.constant.BarbaraConstants.INTENT_PARAM_USER_ITEM_ID_KEY;
 import static com.app.dextrous.barbara.constant.BarbaraConstants.NOTIFICATION_TITLE;
 import static com.app.dextrous.barbara.constant.BarbaraConstants.STRING_BLANK;
+import static com.app.dextrous.barbara.constant.BarbaraConstants.TAG;
 
 public class NotificationPublisher extends BroadcastReceiver {
 
     public void onReceive(Context context, Intent intent) {
 
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        System.out.println("Getting notifications....");
+        Log.d(TAG,"Getting notifications....");
         boolean isTransactionRequest = intent.getBooleanExtra(INTENT_PARAM_IS_TRANSACTION_REQUEST, false);
         String scheduledResponseText = intent.getStringExtra(INTENT_PARAM_SCHEDULED_RESPONSE_TEXT);
         int userId = intent.getIntExtra(INTENT_PARAM_USER_ITEM_ID_KEY, -1);
@@ -42,7 +43,7 @@ public class NotificationPublisher extends BroadcastReceiver {
         if(isTransactionRequest
                 && userId!= -1) {
             String BASE_URL = context.getResources().getString(R.string.base_api_url);
-            System.out.println("Transaction handling");
+            Log.d(TAG,"Transaction handling");
             final BarbaraService apiService = RetrofitWrapper.build(BASE_URL);
             Map<String,Object> form = new HashMap<>();
             form.put(FIELD_USER_ID, userId);
@@ -52,7 +53,7 @@ public class NotificationPublisher extends BroadcastReceiver {
             // in response call call back open the chat activity and make her speak the command
             responseCall.enqueue(new DeferredTransactionCallback(context));
         } else if (!STRING_BLANK.equals(scheduledResponseText)) {
-            System.out.println("Reminder schedule");
+            Log.d(TAG,"Reminder schedule");
             Notification notification = AndroidUtil.getNotification(context, NOTIFICATION_TITLE, scheduledResponseText, null);
             notificationManager.notify((int) AndroidUtil.getRandomNumber(), notification);
         } else {

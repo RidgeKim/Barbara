@@ -14,6 +14,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.app.dextrous.barbara.constant.BarbaraConstants.MSG_GENERIC_ERROR;
+import static com.app.dextrous.barbara.constant.BarbaraConstants.TAG;
 import static com.app.dextrous.barbara.constant.BarbaraConstants.USER_AUTH_OBJECT_PREFERENCE_KEY;
 
 
@@ -37,7 +38,7 @@ public class LoginResponseCallback extends BaseCallback implements Callback<Gene
             if(apiResponse.getSuccess()){
                 User user = apiResponse.getItem();
                 AndroidUtil.setObjectPreferenceAsString(context, USER_AUTH_OBJECT_PREFERENCE_KEY, user);
-                System.out.println("Setting index = " + indexOfTab);
+                Log.d(TAG,"Setting index = " + indexOfTab);
                 flipper.setDisplayedChild(indexOfTab);
             } else {
                 // show error message

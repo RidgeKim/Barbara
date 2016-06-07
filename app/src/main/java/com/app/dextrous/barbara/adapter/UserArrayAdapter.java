@@ -13,11 +13,12 @@ import com.app.dextrous.barbara.model.User;
 
 import java.util.List;
 
+import static com.app.dextrous.barbara.constant.BarbaraConstants.TAG;
+
 public class UserArrayAdapter extends ArrayAdapter<User> {
 
     private final Context context;
     private final List<User> values;
-    String TAG = UserArrayAdapter.class.getName();
 
     public UserArrayAdapter(Context context, List<User> values) {
         super(context, -1, values);

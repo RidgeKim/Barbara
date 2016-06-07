@@ -6,9 +6,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.app.dextrous.barbara.adapter.CreditTransactionArrayAdapter;
 import com.app.dextrous.barbara.adapter.InvestmentArrayAdapter;
-import com.app.dextrous.barbara.model.CreditTransaction;
 import com.app.dextrous.barbara.model.InvestmentPlan;
 import com.app.dextrous.barbara.response.GenericListResponse;
 
@@ -19,6 +17,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.app.dextrous.barbara.constant.BarbaraConstants.MSG_GENERIC_ERROR;
+import static com.app.dextrous.barbara.constant.BarbaraConstants.TAG;
 
 public class InvestmentPlanListCallback extends BaseCallback implements Callback<GenericListResponse<InvestmentPlan>> {
     private ListView listView;
@@ -30,7 +29,7 @@ public class InvestmentPlanListCallback extends BaseCallback implements Callback
     @Override
     public void onResponse(Call<GenericListResponse<InvestmentPlan>> call, Response<GenericListResponse<InvestmentPlan>> response) {
         GenericListResponse<InvestmentPlan> apiResponse = response.body();
-        System.out.println(response.body());
+        Log.d(TAG,response.body().toString());
         if(apiResponse != null) {
             List<InvestmentPlan> investmentPlanList = apiResponse.getItems();
             if(investmentPlanList != null && !investmentPlanList.isEmpty()){

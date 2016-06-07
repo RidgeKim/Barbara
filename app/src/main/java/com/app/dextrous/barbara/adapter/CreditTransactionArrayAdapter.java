@@ -14,12 +14,12 @@ import com.app.dextrous.barbara.model.CreditTransaction;
 import java.util.List;
 
 import static com.app.dextrous.barbara.constant.BarbaraConstants.DELIMITER_SPACE;
+import static com.app.dextrous.barbara.constant.BarbaraConstants.TAG;
 
 public class CreditTransactionArrayAdapter extends ArrayAdapter<CreditTransaction> {
 
     private final Context context;
     private final List<CreditTransaction> values;
-    String TAG = CreditTransactionArrayAdapter.class.getName();
 
     public CreditTransactionArrayAdapter(Context context, List<CreditTransaction> values) {
         super(context, -1, values);
